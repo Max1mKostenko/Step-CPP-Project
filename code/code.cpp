@@ -7,7 +7,7 @@ string generator_password() {
 
     // Array of allowed characters for the password
     const char characters[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789=-_+!@$#%^&*";
-    const int characters_size = sizeof(characters) - 1; // Size of the character array, excluding the null terminator
+    const int characters_size = sizeof(characters) - 1; // Size of the character array
 
     int length;
     do {
