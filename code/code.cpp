@@ -1,35 +1,44 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-// Function to generate a random password
-string generator_password() {
-    srand(time(0)); // Seed the random number generator with the current time
-
-    // Array of allowed characters for the password
-    const char characters[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789=-_+!@$#%^&*";
-    const int characters_size = sizeof(characters) - 1; // Size of the character array, excluding the null terminator
-
-    int length;
-    do {
-        cout << "Amount of symbols in your password: ";
-        cin >> length;
-
-        if (length <= 0) { // Check for invalid input
-            cout << "Error: Length must be greater than zero! Please try again." << endl;
-        }
-    } while (length <= 0); // Repeat until a valid length is entered
+// Function to generate a random password of a given length
+string generator_password(int length) {
+    const char characters[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_+!@$#%^&*";
+    const int characters_size = sizeof(characters) - 1; // Calculate the size of available characters
 
     string password = "";
-
     for (int i = 0; i < length; i++) {
-        // Append a random character from the array to the password
-        password += characters[rand() % characters_size];
+        password += characters[rand() % characters_size]; // Add a random character from the list
     }
 
-    return "Your new password is: " + password;
+    return password;
 }
 
 int main() {
-    // Call the password generator function and display the generated password
-    cout << generator_password() << endl;
+    srand(time(0));
+
+    int length;
+    do {
+        cout << "Amount of symbols in your passwords: ";
+        cin >> length;
+
+        if (length <= 0) {
+            cout << "Error: Length must be greater than zero! Please try again." << endl;
+        }
+    } while (length <= 0); // Repeat until the user enters a valid length
+
+    int count;
+    do {
+        cout << "How many passwords do you want to generate? ";
+        cin >> count;
+
+        if (count <= 0) {
+            cout << "Error: The number of passwords must be greater than zero! Please try again." << endl;
+        }
+    } while (count <= 0); // Repeat until the user enters a valid count
+
+    for (int i = 0; i < count; i++) {
+        cout << "Password " << i + 1 << ": " << generator_password(length) << endl; // Generate and display passwords
+    }
 }
