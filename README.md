@@ -4,7 +4,7 @@ This is my Password-Manager which has done with C++.
 
 ## Stack:
 
-- **C++**
+- **C++ (iostream, fstream, string, cstdlib, ctime, vector)**
 
 ## Main Features:
 
